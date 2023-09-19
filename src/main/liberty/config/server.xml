@@ -2,6 +2,6 @@
 <server description="new server">
     <!-- Enable features -->
     <featureManager>
-        <feature>jakartaee-10.0</feature>
+        <feature>jakartaee-8.0</feature>
     </featureManager>
 </server>
