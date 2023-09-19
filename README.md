@@ -12,16 +12,6 @@ Run using `mvn jetty:run` and open [http://localhost:8080](http://localhost:8080
 
 If you want to run your app locally in the production mode, run `mvn jetty:run -Pproduction`.
 
-### Running Integration Tests
-
-Integration tests are implemented using [Vaadin TestBench](https://vaadin.com/testbench). The tests take a few minutes to run and are therefore included in a separate Maven profile. We recommend running tests with a production build to minimize the chance of development time toolchains affecting test stability. To run the tests using Google Chrome, execute
-
-`mvn verify -Pit,production`
-
-and make sure you have a valid TestBench license installed (you can obtain a 
-trial license from the [trial page](
-https://vaadin.com/trial)).
-
 ## Project structure
 
 The project follow Maven's [standard directory layout structure](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html):
@@ -30,7 +20,6 @@ The project follow Maven's [standard directory layout structure](https://maven.a
       installable
     - `GreetService.java` is a service class
     - `MainView.java` is an example Vaadin view
-- Under the `srs/test` are located the TestBench test files
 - `src/main/resources` contains configuration files and static resources
 - The `frontend` directory in the root folder contains client-side 
   dependencies and resource files. Example CSS styles used by the application 
