@@ -1,0 +1,41 @@
+name: Check Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ v24 ]
+    paths-ignore: 
+      - '**.md'
+  pull_request:
+    branches: [ v24 ]
+    paths-ignore: 
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [17]
+        distribution: [temurin]
+
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: ${{ matrix.distribution }}
+        java-version: ${{ matrix.java }}
+        cache: 'maven'
+      
+    - name: Build with Maven
+      run: mvn -B clean package liberty:create liberty:install-feature liberty:deploy liberty:package -P production -Dinclude=minify,runnable
+
+    - name: Upload demo files
+      uses: actions/upload-artifact@v3
+      with:
+        name: demo-files-java-${{ matrix.java }}
+        path: target/*.jar
+        if-no-files-found: error
