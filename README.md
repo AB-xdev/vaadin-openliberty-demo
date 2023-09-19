@@ -8,7 +8,7 @@
 * You can also run it [in dev mode](https://openliberty.io/guides/maven-intro.html#running-the-application) using ``mvn liberty:dev``
 
 ### Production
-* To create an executable jar run ``mvn package liberty:create liberty:install-feature liberty:deploy liberty:package  -P production -Dinclude=minify,runnable``
+* To create an executable jar run ``mvn package liberty:create liberty:install-feature liberty:deploy liberty:package -P production -Dinclude=minify,runnable``
 
 ## Remarks and conclusions
 OpenLiberty was designed for MicroServices. Vaadin is not a microservice.
